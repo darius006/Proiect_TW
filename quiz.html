@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Flags – Quiz</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="The histories and designs of flags">
+    <meta name="author" content="Darius Purcaru">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar__container">
+        <span class="top-margin"></span>
+        <a href="/" id="navbar__logo"><img src="images/flag_icon.png" alt="flag icon" class="icon">FLAGS</a>
+        <div class="navbar__toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="navbar__menu">
+          <li class="navbar__item"><a href="/" class="navbar__link">Home</a></li>
+          <li class="navbar__item"><a href="history.html" class="navbar__link">History</a></li>
+          <li class="navbar__item"><a href="design.html" class="navbar__link">Design</a></li>
+          <li class="navbar__item"><a href="quiz.html" class="navbar__link">Test your flag knowledge</a></li>
+          <li class="navbar__item"><a href="https://flagmakerjr.stg7.net/" class="navbar__link" target="_blank">Make your own</a></li>
+        </ul>
+      </div>
+    </nav>
+    <main>
+      <section class="banner__container" id="article__banner">
+        <div class="banner">
+          <h1 class="banner__title hidden">Take our quiz!</h1>
+          <div class="banner__text hidden">
+            Want to test how many flags you can recognize? Take our quiz and find out!
+          </div>
+        </div>
+      </section>
+      <div id="b1"></div> 
+      <article class="main__article" id="quiz__container">
+        <div id="quiz">
+          <div class="quiz__heading" id="highscore">
+            High score: 0
+          </div>
+          <div class="quiz__heading">
+            The quiz has 10 flags. You will have <select name="seconds" id="seconds" value="30">
+              <option value="15">15</option>
+              <option value="30">30</option>
+              <option value="45">45</option>
+            </select>
+            seconds for each guess.
+          </div>
+          <div class="quiz__heading">
+            Please enter a username (for storing scores locally):
+          </div>
+          <input type="text" name="username" id="username" value="anonymous" required>
+          <button name="start" id="start">Start!</button>
+        </div>
+      </article>
+      <div id="b2"></div>
+    </main>
+    <footer id="home__footer">
+      <div class="section__footer">
+        <h2 class="footer__title">
+          Get in touch
+        </h2>
+        <div class="footer__text">
+          Have a question, feedback, or just want to say hello? Use the form below to send me a message, and I'll get back to you as soon as possible. You can also find my github page and email below.
+        </div>
+      </div>
+      <form name="form" method="post" target="_blank" action="https://www.w3schools.com/action_page.php">
+        <fieldset>
+          <div class="form__entry">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="form__name" placeholder="e.g. John Titor" required>
+          </div>
+          <div class="form__entry">
+            <label for="mail">Email</label>
+            <input type="text" name="email" id="form__email" placeholder="example@institution.com" pattern="[\w\-\.]+@([\w\-]+\.)+[\w\-]+" required>
+          </div>
+          <div class="form__entry">
+            <label for="message">Message</label>
+            <textarea name="message" id="form__message" rows="6" required></textarea>
+          </div>
+          <button type="submit" id="submit">Send</button>
+        </fieldset>
+      </form>
+      <div id="contacts">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=dariusconstantin098@gmail.com" target="_blank" class="nodec">
+          <img src="images/mail.png" width="60" alt="mail" class="footer__link">
+        </a>
+        <a href="https://github.com/darius006" target="_blank" class="nodec">
+          <img src="images/github.png" width="60" alt="github" class="footer__link">
+        </a>
+      </div>
+      <div>©2024 Purcaru Darius. All rights reserved.</div>
+      <div><a href="https://www.flaticon.com/free-icons/flag" title="flag icons" target="_blank">Flag icons created by Smashicons - Flaticon</a></div>
+    </footer>
+  </body>
+</html>
