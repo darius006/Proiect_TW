@@ -53,8 +53,6 @@ body {
   padding: 0 10px;
 }
 
-
-
 .navbar__menu {
   display: flex;
   list-style-type: none;
@@ -459,6 +457,7 @@ tr:nth-child(even) {
 
 #quiz {
   display: flex;
+  position: relative;
   height: 600px;
   width: 800px;
   padding: 20px;
@@ -583,6 +582,49 @@ option {
   text-align: center;
   cursor: pointer;
   font-size: 1.2rem;
+}
+
+.all-scores {
+  position: absolute;
+  font-size: 1.2rem;
+  bottom: 40px;
+  right: 50px;
+  cursor: pointer;
+  user-select: none;
+}
+
+#scores-panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  content: '';
+  background-color: rgb(46, 49, 65);
+  border-radius: 20px;
+}
+
+.current-score {
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 10px 0;
+  border-bottom: none;
+}
+
+#scores-message {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 2.5rem;
+}
+
+#scores-list {
+  position: absolute;
+  width: 100%;
+  height: 85%;
+  border-radius: 20px;
+  overflow: scroll;
+  padding: 50px 50px 0 50px;
 }
 
 #home__footer {
@@ -722,6 +764,10 @@ textarea:focus, input:focus {
   
   #contacts {
     width: 40vw;
+  }
+
+  .current-score {
+    font-size: 2.2rem;
   }
 }
 
@@ -875,6 +921,16 @@ textarea:focus, input:focus {
 
   #options {
     padding: 30px 30px;
+  }
+
+  .all-scores {
+    font-size: 1rem;
+    bottom: 20px;
+    right: 30px;
+  }
+
+  .current-score {
+    border: none !important;
   }
 
 }

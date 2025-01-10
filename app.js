@@ -26,43 +26,93 @@ window.onload = function() {
   sessionStorage.setItem("score", 0);
   hsMessage = document.getElementById("highscore");
 
-  if (!isNaN(localStorage["high_score"]) && localStorage["high_score"] != 0) {
-    hsMessage.innerText = `High score: ${localStorage["hs_user"]} - ${localStorage["high_score"]}`;
-
+  if (!("users" in localStorage)) {
+    localStorage.setItem("users", JSON.stringify({}))
   }
-  else if (isNaN(localStorage["high_score"])) {
+
+  if (isNaN(localStorage["high_score"])) {
     localStorage.setItem("high_score", 0);
   }
 
-  defaultBorder = getComputedStyle(quiz).border;
-
-  quiz.addEventListener("click", quizClickHandler);
-
-  function quizClickHandler(event) {
-    quiz.style.border = "solid white";
-    event.stopPropagation();
+  if (localStorage["high_score"] != 0) {
+    hsMessage.innerText = `High score: ${localStorage["hs_user"]} - ${localStorage["high_score"]}`;
   }
+  
+  if (quiz === Object()) {
+    defaultBorder = getComputedStyle(quiz).border;
+    quiz.addEventListener("click", quizClickHandler);
 
-  document.body.addEventListener("click", bodyClickHandler);
-
-  function bodyClickHandler(event) {
-    quiz.style.border = defaultBorder;
-  }
-
-  start.addEventListener("click", (event) => {
-    let username = document.getElementById("username").value;
-    if (username == "") {
-      alert("Please enter a username!");
-      return;
+    function quizClickHandler(event) {
+      quiz.style.border = "solid white";
+      event.stopPropagation();
     }
-    quiz.removeEventListener("click", quizClickHandler);
-    document.body.removeEventListener("click", bodyClickHandler);
-    quiz.style.display = "grid";
-    quiz.style.gridTemplate = "1fr 4fr 1fr / 1fr";
-    seconds = document.getElementById("seconds").value;
-    sessionStorage.setItem("username", username);
-    startQuiz(1);
-  });
+
+    document.body.addEventListener("click", bodyClickHandler);
+
+    function bodyClickHandler(event) {
+      quiz.style.border = defaultBorder;
+    }
+  }
+
+  scoresButton = document.getElementsByClassName("all-scores")[0];
+
+  if (scoresButton !== null) {
+    scoresButton.addEventListener("click", (event) => {
+      scoresPanel = document.createElement("div");
+      scoresPanel.id = "scores-panel";
+      quiz.appendChild(scoresPanel);
+      let goBack = document.createElement("div");
+      goBack.textContent = "Back to quiz <<";
+      goBack.className = "all-scores";
+      goBack.addEventListener("click", (event) => {
+        quiz.removeChild(scoresPanel);
+      });
+      scoresPanel.appendChild(goBack);
+      let users = JSON.parse(localStorage["users"]);
+      scoresList = document.createElement("div");
+      scoresList.id = "scores-list";
+      if (Object.keys(users).length === 0) {
+        let scoresMessage = document.createElement("div"),
+        messageText = document.createElement("div");
+        scoresMessage.id = "scores-message";
+        scoresMessage.textContent = "Scores will be shown here";
+        // scoresMessage.appendChild(messageText);
+        scoresList.appendChild(scoresMessage);
+        scoresPanel.appendChild(scoresList);
+        return;
+      }
+      let arr = Object.keys(users);
+      arr.sort((a, b) => users[b] - users[a])
+      arr.forEach((name) => {
+        let currentScore = document.createElement("div");
+        currentScore.textContent = `${name}: ${users[name]}`;
+        currentScore.className = "current-score";
+        scoresList.appendChild(currentScore);
+      });
+      scoresPanel.appendChild(scoresList);
+    });
+  }
+
+  if (start !== null) {
+    start.addEventListener("click", (event) => {
+      let username = document.getElementById("username").value;
+      if (username == "") {
+        alert("Please enter a username!");
+        return;
+      }
+      if (username.length > 10) {
+        alert("Username must have between 1 and 10 characters.");
+        return;
+      }
+      quiz.removeEventListener("click", quizClickHandler);
+      document.body.removeEventListener("click", bodyClickHandler);
+      quiz.style.display = "grid";
+      quiz.style.gridTemplate = "1fr 4fr 1fr / 1fr";
+      seconds = document.getElementById("seconds").value;
+      sessionStorage.setItem("username", username);
+      startQuiz(1);
+    });
+  }
 
   function startQuiz(number) {
     quiz.innerHTML = "";
@@ -197,11 +247,18 @@ window.onload = function() {
     let endMessage = document.createElement("div");
     endMessage.className = "quiz__heading";
     endMessage.style.margin = "auto";
-    endMessage.innerText = `You got ${sessionStorage["score"]}/10 flags right.`
-    if (parseInt(sessionStorage["score"]) >= parseInt(localStorage["high_score"])) {
-      localStorage["hs_user"] = sessionStorage["username"];
-      localStorage["high_score"] = sessionStorage["score"];
+    let username = sessionStorage["username"],
+    score = sessionStorage["score"],
+    users = JSON.parse(localStorage["users"]);
+    endMessage.innerText = `You got ${score}/10 flags right.`;
+    if (parseInt(score) >= parseInt(localStorage["high_score"])) {
+      localStorage["hs_user"] = username;
+      localStorage["high_score"] = score;
     }
+    if (isNaN(localStorage["users"][username]) || score > localStorage["users"][username]){
+      users[username] = score;
+    }
+    localStorage["users"] = JSON.stringify(users);
     let tryAgain = document.createElement("button");
     tryAgain.innerText = "Try again";
     tryAgain.id = "try-again";
