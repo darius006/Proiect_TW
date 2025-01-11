@@ -492,7 +492,7 @@ option {
 
 #username {
   max-width: 40%;
-  min-width: 400px;
+  min-width: 250px;
   font-size: 2rem;
 }
 
