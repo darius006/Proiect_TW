@@ -786,7 +786,7 @@ textarea:focus, input:focus {
     margin-right:auto !important; 
   }
   .main__article {
-    padding: 50px 10%;
+    padding: 50px 4% !important;
   }
 
 }

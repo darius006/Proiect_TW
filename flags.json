@@ -2,43 +2,43 @@
   "flags": [
     {
       "country": "United States",
-      "image": "./images/Flag_of_the_US.png"
+      "image": "images/Flag_of_the_US.png"
     },
     {
       "country": "Australia",
-      "image": "./images/Flag_of_Australia.png"
+      "image": "images/Flag_of_Australia.png"
     },
     {
       "country": "India",
-      "image": "./images/Flag_of_India.png"
+      "image": "images/Flag_of_India.png"
     },
     {
       "country": "Bhutan",
-      "image": "./images/Flag_of_Bhutan.png"
+      "image": "images/Flag_of_Bhutan.png"
     },
     {
       "country": "Mozambique",
-      "image": "./images/Flag_of_Mozambique.png"
+      "image": "images/Flag_of_Mozambique.png"
     },
     {
       "country": "Lesotho",
-      "image": "./images/Flag_of_Lesotho.png"
+      "image": "images/Flag_of_Lesotho.png"
     },
     {
       "country": "Qatar",
-      "image": "./images/Flag_of_Qatar.png"
+      "image": "images/Flag_of_Qatar.png"
     },
     {
       "country": "Seychelles",
-      "image": "./images/Flag_of_Seychelles.png"
+      "image": "images/Flag_of_Seychelles.png"
     },
     {
       "country": "Antigua and Barbuda",
-      "image": "./images/Flag_of_Antigua_and_Barbuda.png"
+      "image": "images/Flag_of_Antigua_and_Barbuda.png"
     },
     {
       "country": "Rwanda",
-      "image": "./images/Flag_of_Rwanda.png"
+      "image": "images/Flag_of_Rwanda.png"
     }
   ]
 }
