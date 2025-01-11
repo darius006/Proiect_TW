@@ -163,7 +163,7 @@ window.onload = function() {
     }, 1000);
     
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", "/flags.json", false);
+    xhr.open("GET", "../flags.json", false);
     xhr.send();
     let flags = JSON.parse(xhr.responseText)["flags"];
     let i = number - 1;
