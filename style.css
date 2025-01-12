@@ -745,6 +745,9 @@ textarea:focus, input:focus {
 
 /*display-uri mici*/
 @media screen and (max-width: 600px) {
+  .banner {
+    width: 85% !important;
+  }
   .banner__text {
     font-size: 1.2rem !important;
   }
@@ -768,6 +771,10 @@ textarea:focus, input:focus {
 
   .current-score {
     font-size: 2.2rem;
+  }
+
+  #one::after, #two::after, #three::after, #b1, #b2, #b3 {
+    border: none;
   }
 }
 
