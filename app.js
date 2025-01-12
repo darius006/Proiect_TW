@@ -56,7 +56,7 @@ window.onload = function() {
 
   let scoresButton = document.getElementsByClassName("all-scores")[0];
 
-  if (!isNaN(scoresButton)) {
+  if (scoresButton !== Object()) {
     scoresButton.addEventListener("click", (event) => {
       scoresPanel = document.createElement("div");
       scoresPanel.id = "scores-panel";
