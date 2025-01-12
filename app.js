@@ -34,7 +34,7 @@ window.onload = function() {
     localStorage.setItem("high_score", 0);
   }
 
-  if (localStorage["high_score"] != 0) {
+  if (localStorage["high_score"] != 0 && hsMessage !== null) {
     hsMessage.innerText = `High score: ${localStorage["hs_user"]} - ${localStorage["high_score"]}`;
   }
   
@@ -54,9 +54,9 @@ window.onload = function() {
     }
   }
 
-  scoresButton = document.getElementsByClassName("all-scores")[0];
+  let scoresButton = document.getElementsByClassName("all-scores")[0];
 
-  if (scoresButton !== null) {
+  if (!isNaN(scoresButton)) {
     scoresButton.addEventListener("click", (event) => {
       scoresPanel = document.createElement("div");
       scoresPanel.id = "scores-panel";

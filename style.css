@@ -111,7 +111,7 @@ main {
   background-size: 1920px;
   background-attachment: fixed;
   background-position: center center;
-  min-width: 400px; 
+  width: 100%;
   overflow: hidden;
 }
 
