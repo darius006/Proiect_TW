@@ -114,7 +114,7 @@ window.onload = function() {
     });
   }
 
-  function startQuiz(number) {
+  async function startQuiz(number) {
     quiz.innerHTML = "";
     let k;
     let arr = quiz.style.border.split(" ");
@@ -161,11 +161,14 @@ window.onload = function() {
         options.removeEventListener("click", choiceEventHandler);
       }
     }, 1000);
-    
-    let xhr = new XMLHttpRequest();
-    xhr.open("GET", "./flags.json", false);
-    xhr.send();
-    let flags = JSON.parse(xhr.responseText)["flags"];
+    const url = "./flags.json";
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`);
+    }
+
+    const json = await response.json();
+    let flags = json["flags"];
     let i = number - 1;
     let image = document.createElement("img");
     image.src = flags[i]["image"];
